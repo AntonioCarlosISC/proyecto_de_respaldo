@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from email import message
 from multiprocessing import context
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
@@ -22,7 +23,6 @@ nosotros = generar_vista('paginas/contacto.html')
 contacto = generar_vista('paginas/contacto.html')
 acerca = generar_vista('paginas/acerca.html')
 carousel = generar_vista('paginas/carousel.html')
-
 #Aquí se organizan las vistas de la carpeta menu
 ciencia = generar_vista('menu/ciencia.html')
 superacion = generar_vista('menu/superacion.html')
@@ -138,6 +138,23 @@ form_b22 = gen_form('menu/form_a22.html')
 form_b23 = gen_form('menu/form_a23.html')
 
 #Aquí van las funciones que deben definirse de manera especifica
+@login_required
+def redirigir_usuario(request):
+    # Obtiene el rol del usuario logueado
+    rol_usuario = request.user.rol
+
+    # Redirige al panel de evaluador si el usuario es un evaluador
+    if rol_usuario == 'evaluador':
+        return redirect('evaluador')
+    # Redirige al panel de investigador si el usuario es un investigador
+    elif rol_usuario == 'investigador':
+        return redirect('home')
+    # Redirige a la página de inicio si el usuario tiene cualquier otro rol
+    else:
+        return redirect('home')
+def evaluador(request):
+        return render(request, 'paginas/panel_evaluador.html')
+
 
 def salir(request):
     logout(request)
@@ -154,7 +171,7 @@ def registro(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request,user)
-            return redirect('home')
+            return redirect('redirigiendo')
         else:
             return render(request,'usuario/registro.html', {'form': form})
     else:
@@ -171,7 +188,7 @@ def i_ses(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home') #profile
+            return redirect('redirigiendo') #profile
         else:
             msg = '¡Error al Iniciar Sesion!'
             form = AuthenticationForm(request.POST)
