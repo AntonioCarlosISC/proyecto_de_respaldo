@@ -1,0 +1,52 @@
+{% extends 'paginas/carousel.html' %}
+  
+{% block titulo %}Participación en proyectos de investigación, con financiamiento interno {% endblock %}
+{% load static  %}
+<link type="text/css" href="{% static 'css/estilo.css' %}" rel="stylesheet">
+  
+{% block contenido %} 
+
+<nav class="navbar" style="background-color: #FFFFFF;">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1"></span>
+    </div>
+  </nav>
+
+<div class="card">
+    <div class="card-header">
+        
+        <a name="" id="" class="btn btn-warning" href="crear_b20" role="button" style="background-color:#FFD200"> Agregar Documento</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Participación en proyectos de investigación, con financiamiento interno (máximo dos proyectos)</h4>
+
+        <div class="table-responsive-xxl">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id del Investigador</th>
+                    <th scope="col">Archivo</th>
+                    <th scope="col">Acción</th>   
+                </tr>
+            </thead>
+            <tbody>
+                {% for b20 in cat_b20 %}
+                <tr class="">
+                    <td scope="row">{{b20.idInv}}</td>
+                    <td><a href="javascript:void(0);" onclick="window.open('{{b20.arch_proyecto.url }}', 'popup', 'top=100, left=100, width=599, height=680, toolbar=NO, resizable=NO, Location=NO, Menubar=NO, Titlebar=No, Status=NO')" rel="nofollow"><button class="pircing-action pulse" style="background-color:#FFD200; border:0; font-size:13px; font-family:Verdana; width: 110px; height: 45px;border-radius:8px ">Visualizar Archivo</button></a></p></td>
+                    <td><a name="" id="" class="btn btn-warning" href="{% url 'editar_b20' b20.idInv %}" role="button" style="width:130px;height:45px; background-color:#FFD200">Editar archivo</a></td>
+                </tr>
+                
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

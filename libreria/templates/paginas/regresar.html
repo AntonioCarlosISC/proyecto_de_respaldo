@@ -1,0 +1,38 @@
+{% extends 'paginas/carousel.html' %}
+{% block titulo %}Iniciar Sesion{% endblock %}
+  
+{% block contenido %}
+<br/>
+   <h1>Bienvenido</h1>
+   {% if user.is_authenticated %}
+
+   <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="blackS">
+    <div class="bg-White p-4">
+      <ul class>
+        <li><a type="button" class="btn btn-outline-info" href="ciencia">Producción Científica y Tecnológica</a></li>
+      </br>
+        <li><a type="button" class="btn btn-outline-info" href="{% url 'superacion' %}">Superación Académica , Formación de Recursos Humanos y Otros</a></li>  
+    </ul>  
+    </div>
+  </div>
+  <nav class="navbar navbar-red bg-white">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+    
+   <br/><br/>¡Hola <b>{{ user.username }}</b>!
+   <p></p>
+    <div class="d-flex col-md-2">
+      <br/>
+      <br/>
+      <br/>
+      <a href="salir" class="btn btn-outline-danger btn-xs" style="width: 100px; height: 40px;" >Salir</a><br/>
+    </div>
+
+    {% else %}
+
+    {% endif %}
+{% endblock %}

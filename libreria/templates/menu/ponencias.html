@@ -1,0 +1,28 @@
+
+{% extends 'paginas/carousel.html' %}
+  
+{% block titulo %}Presentación de Ponencias y Carteles{% endblock %}
+{% load static  %}
+<link type="text/css" href="{% static 'css/estilo.css' %}" rel="stylesheet">
+
+  
+{% block contenido %} 
+
+<nav class="navbar" style="background-color: #FFFFFF;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"></span>
+  </div>
+</nav>
+
+<div class="d-flex align-items-center">
+  <div class="btn-group btn-group-justified" style="height:250px;width:1600px;">
+    <a href="cat_b14" class="btn btn-outline-warning " style="height:200px;width:230px"><img class="img" src="https://cdn-icons-png.flaticon.com/128/744/744354.png" alt="img" style="width: 20%;height: 25%; margin-bottom:10px; margin-top:10px;" /></br>Ponencias en congresos o simposios científicos internacionales</a>
+    <a href="cat_b15" class="btn btn-outline-warning  " style="height:200px;width:230px"><img class="img" src="https://cdn-icons-png.flaticon.com/128/1436/1436766.png" alt="img" style="width: 20%;height: 25%; margin-bottom:10px; margin-top:10px;" /></br>Ponencias en congresos o simposios científicos nacionales</a>
+    <a href="cat_b16" class="btn btn-outline-warning  " style="height:200px;width:230px"><img class="img" src="https://cdn-icons-png.flaticon.com/512/3173/3173739.png" alt="img" style="width: 20%;height: 25%; margin-bottom:10px; margin-top:10px;" /></br>Presentación de carteles en congresos o simposios científicos internacionales</a>
+    <a href="cat_b17" class="btn btn-outline-warning  " style="height:200px;width:230px"><img class="img" src="https://cdn-icons-png.flaticon.com/512/4065/4065030.png" alt="img" style="width: 20%;height: 25%; margin-bottom:10px; margin-top:10px;" /></br>Presentación de carteles en congresos o simposios científicos nacionales</a>    
+  </div>
+
+</div>
+
+
+{% endblock %}

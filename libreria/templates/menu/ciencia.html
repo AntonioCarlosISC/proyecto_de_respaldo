@@ -1,0 +1,31 @@
+
+{% extends 'paginas/carousel.html' %}
+  
+{% block titulo %}Ciencia{% endblock %}
+{% load static  %}
+
+<link type="text/css" href="{% static 'css/estilo.css' %}" rel="stylesheet">
+
+  
+{% block contenido %} 
+
+<nav class="navbar" style="background-color: #FFFFFF;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"></span>
+  </div>
+  
+</nav>
+
+<div class="botones">
+  <div class="d-flex align-items-center">
+    <div class="btn-group btn-group-justified" style="height:200px;width:1200px">
+      <a href="productividad" class="btn btn-outline-warning" style="height:200px;width:150px"><img class="img" src="https://cdn4.iconfinder.com/data/icons/business-black-1/64/23-64.png" alt="img" style="width: 20%;height: 40%; margin-bottom:10px; margin-top:10px;" /></br>Productividad</a>
+      <a href="participacion" class="btn btn-outline-warning" style="height:200px;width:150px"><img class="img" src="https://cdn-icons-png.flaticon.com/128/6614/6614453.png" alt="img" style="width: 20%;height: 40%; margin-bottom:10px; margin-top:10px;" /></br>Participación en proyectos</a>
+      <a href="sni" class="btn btn-outline-warning" style="height:200px;width:150px"><img class="img" src="https://cdn-icons-png.flaticon.com/128/6875/6875900.png" alt="img" style="width: 12%;height: 40%; margin-bottom:10px; margin-top:10px;" /></br>Investigadores pertenecientes al SNI</a>
+    </div>
+    
+  
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'paginas/carousel.html' %}
+  
+{% block titulo %}Agregar nuevo Documento{% endblock %}
+{% load static  %}
+<link type="text/css" href="{% static 'css/estilo.css' %}" rel="stylesheet">
+
+  
+{% block contenido %} 
+
+<nav class="navbar" style="background-color: #FFFFFF;">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1"></span>
+    </div>
+  </nav>
+
+<div class="card">
+    <div class="card-header">
+       Subir archivo para la validación del área
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Documento</h4>
+        {% include 'menu/form_a11.html'%}
+
+    </div>
+</div>
+
+{% endblock %}

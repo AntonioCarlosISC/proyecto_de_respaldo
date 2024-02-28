@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Archivos</title>
+  {% load static  %}
+  
+  <meta charset="utf-8">
+
+
+  <!-- Bootstrap CSS v5.2.1 -->
+
+</head>
+
+<body>
+    {% for b6 in cat_b6 %}
+    
+    <iframe src="{{ b6.arch_titulo.url }}" height="250px" width="300px"></iframe> 
+
+    {% endfor %}
+</body>
+
+</html>
+

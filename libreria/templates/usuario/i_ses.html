@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+  
+{% block titulo %}Login{% endblock %}
+  
+{% block contenido %}
+  <h2>Inicio</h2> </br>{{ msg }}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+  </br>
+    <button type="submit" class="btn btn-primary">Iniciar</button>
+  </form>
+  <style>
+    body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 5px solid #ccc;
+        border-radius: 5px;
+        background-color: #6aabf1;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+    }
+    input[type="Nombre de usuario"],
+    input[type="contraseña"] {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #cccccc;
+        border-radius: 3px;
+    }
+    button[type="submit"] {
+        padding: 8px 10px;
+        background-color: #fbfbfd;
+        color: #070707;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    button[type="submit"]:hover {
+        background-color: #98f5f5;
+        text-align: center;
+    }
+</style>
+  
+{% endblock %}

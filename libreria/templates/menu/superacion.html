@@ -1,0 +1,27 @@
+
+{% extends 'paginas/carousel.html' %}
+  
+{% block titulo %}Ciencia{% endblock %}
+{% load static  %}
+<link type="text/css" href="{% static 'css/estilo.css' %}" rel="stylesheet">
+
+  
+{% block contenido %} 
+<nav class="navbar" style="background-color: #FFFFFF;">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1"></span>
+  </div>
+</nav>
+
+<div class="d-flex align-items-center">
+  <div class="btn-group btn-group-justified" style="height:180px; width:1500px;">
+    <a href="superacionAca" class="btn btn-outline-warning" style="height:180px; width:200px;" ><img class="img" src="https://cdn-icons-png.flaticon.com/128/8089/8089069.png" alt="img" style="width: 20%;height: 35%; margin-bottom:10px; margin-top:10px;" /></br>Superación Académica</a>
+    <a href="rh" class="btn btn-outline-warning" style="height:180px; width:200px;"><img class="img" src="https://cdn-icons-png.flaticon.com/128/902/902746.png" alt="img" style="width: 20%;height: 35%; margin-bottom:10px; margin-top:10px;" /></br>Formación de Recursos Humanos</a>
+    <a href="ponencias" class="btn btn-outline-warning" style="height:180px; width:200px;"><img class="img" src="https://cdn-icons-png.flaticon.com/128/3183/3183565.png" alt="img" style="width: 20%;height: 35%; margin-bottom:10px; margin-top:10px;" /></br>Presentación de Ponencias y Carteles</a>
+    <a href="otros" class="btn btn-outline-warning" style="height:180px; width:200px;"><img class="img" src="https://cdn-icons-png.flaticon.com/128/4466/4466298.png" alt="img" style="width: 20%;height: 35%; margin-bottom:10px; margin-top:10px;" /></br>Otros</a>
+  </div>
+  
+</div>
+
+
+{% endblock %}
