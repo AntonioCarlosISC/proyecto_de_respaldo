@@ -87,6 +87,8 @@ cat_b21 = generar_cat(b21)
 cat_b22 = generar_cat(b22)
 cat_b23 = generar_cat(b23)
 
+
+
 #Funcion de fabrica para los form_
 def gen_form(plantilla):
     def form_(request):
@@ -152,8 +154,27 @@ def redirigir_usuario(request):
     # Redirige a la página de inicio si el usuario tiene cualquier otro rol
     else:
         return redirect('home')
+
+
 def evaluador(request):
-        return render(request,'paginas/panel_evaluador.html')
+    cat_a1 = a1.objects.all()
+    return render(request,'paginas/panel_evaluador.html',{'cat_a1':cat_a1})
+
+
+#Funcion de fabrica para la vista evaluador
+def generar_vista_evaluador(*modelos):
+    def vista_evaluador(request):
+        contexto = {}
+        for modelo in modelos:
+            objetos = modelo.objects.all()
+            contexto[f'{modelo.__name__.lower()}s'] = objetos
+        # Asume que tienes una plantilla genérica para mostrar todas las categorías
+        pagina = 'paginas/panel_evaluador.html'
+        return render(request, pagina, contexto)
+    return vista_evaluador
+
+# Usando la nueva función para generar una vista que incluye todos los modelos
+vista_evaluador = generar_vista_evaluador(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18, b19, b20,b21,b22,b23)
 
 
 def salir(request):

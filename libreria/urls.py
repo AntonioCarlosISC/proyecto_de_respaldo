@@ -6,9 +6,10 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import static
 
 
+
 urlpatterns = [
     path('',views.home, name='home'),
-    path('evaluador',views.evaluador,name='evaluador'),
+    path('evaluador',views.vista_evaluador,name='evaluador'),
     path('redirigiendo',views.redirigir_usuario,name='redirigiendo'),
     path('contacto',views.nosotros, name='contacto'),
     path('nosotros',views.nosotros, name='nosotros'),

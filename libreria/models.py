@@ -3,6 +3,14 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+#Creacion del modelo Calificacion
+class Calificacion(models.Model):
+    id = models.AutoField(primary_key=True)
+    investigador = models.CharField(max_length=100,verbose_name="Nombre del investigador que subio el archivo")
+    estadoCalificacion = models.CharField(max_length=20,verbose_name="Estado de la calificacion",blank=True)
+    calificacion = models.IntegerField(max_length=3,verbose_name="Calificacion del trabajo",blank=False)
+    ultimaRevision = models.DateTimeField(auto_now=True)
+
 #Creacion del modelo personalizado para usuarios
 class UsuarioPersonalizado(AbstractUser):
     rol = models.CharField(verbose_name='rol',max_length=20,blank=True)
@@ -53,7 +61,7 @@ class b5(models.Model):
     nombre_doctorado =models.TextField(max_length=100, verbose_name="Nombre de la Especialidad") 	 
     nombre_inst_edu =models.TextField(verbose_name="Nombre de la Institución Educativa")
     pais =models.TextField(verbose_name="País")
-    fecha_obtención =models.TextField(verbose_name="Fecha de Obtención") 	 
+    fecha_obtención = models.TextField(verbose_name="Fecha de Obtención") 	 
     archivo_titulo= models.FileField( upload_to='archivos/',verbose_name="Archivo del Titulo")
     
 
