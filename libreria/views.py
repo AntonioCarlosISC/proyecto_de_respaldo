@@ -153,7 +153,7 @@ def redirigir_usuario(request):
     else:
         return redirect('home')
 def evaluador(request):
-        return render(request, 'paginas/panel_evaluador.html')
+        return render(request,'paginas/panel_evaluador.html')
 
 
 def salir(request):

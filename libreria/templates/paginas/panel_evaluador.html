@@ -1,15 +1,11 @@
-{%extends 'paginas/carousel.html'%}
-{% comment %} Template inherits from head.djt {% endcomment %}
-{% load static %}
+{%extends 'base.html'%}
+{%block titulo%}<h1>Panel de evaluacion</h1>{%endblock%}
 
-{% block stylesheet %}
-    <link rel="stylesheet" type="text/css" href="{% static '' %}?version={{css_version}}">
-{% endblock stylesheet%}
+{%block contenido%}
 
-{% block body %}
-
-{% endblock body %}
-
-{% block scripts %}
-    <script src="{% static ''%}?version={{ js_version }}" type="module"></script>
-{% endblock scripts %}
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title text-center">Panel de evaluación</h4>
+    </div>
+</div>
+{%endblock%}

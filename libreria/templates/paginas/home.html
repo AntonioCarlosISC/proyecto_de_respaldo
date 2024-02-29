@@ -6,6 +6,7 @@
    <h1>Bienvenido a COVEYCIDET</h1>
    {% if user.is_authenticated %}
 
+   {%if user.rol == 'investigador'%}
    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="blackS">
     <div class="bg-White p-4">
       <ul class>
@@ -15,6 +16,7 @@
     </ul>  
     </div>
   </div>
+  
   <nav class="navbar navbar-red bg-white">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,9 +24,9 @@
       </button>
     </div>
   </nav>
-    
+  {%endif%}  
    <br/><br/>¡Hola <b>{{ user.username }}</b>!
-   <br/><br/>Rol: <b>{{ user.rol }}</b>
+   <br/><br/>Rol: <b>{{user.rol}}</b>
    <p></p>
     <div class="d-flex col-md-2">
       <br/>
