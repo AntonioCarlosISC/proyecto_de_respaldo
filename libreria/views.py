@@ -3,6 +3,8 @@ from email import message
 from multiprocessing import context
 from django.contrib.auth.decorators import login_required
 
+from django.core.paginator import Paginator
+
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse
@@ -161,14 +163,26 @@ def evaluador(request):
     return render(request,'paginas/panel_evaluador.html',{'cat_a1':cat_a1})
 
 
-#Funcion de fabrica para la vista evaluador
+# Función de fábrica para la vista evaluador con paginación
 def generar_vista_evaluador(*modelos):
     def vista_evaluador(request):
+        # Recoger el modelo a paginar y el número de página desde los parámetros de la URL
+        modelo_paginar = request.GET.get('modelo_paginar')
+        pagina_numero = request.GET.get('pagina', 1)
         contexto = {}
+        
         for modelo in modelos:
+            nombre_modelo = modelo.__name__.lower() + 's'
             objetos = modelo.objects.all()
-            contexto[f'{modelo.__name__.lower()}s'] = objetos
-        # Asume que tienes una plantilla genérica para mostrar todas las categorías
+
+            # Paginar solo el modelo especificado
+            if modelo_paginar and modelo_paginar.lower() == nombre_modelo:
+                paginator = Paginator(objetos, 5)  # Ajusta 10 (o el número deseado) objetos por página
+                pagina_objetos = paginator.get_page(pagina_numero)
+                contexto[nombre_modelo] = pagina_objetos
+            else:
+                contexto[nombre_modelo] = objetos
+
         pagina = 'paginas/panel_evaluador.html'
         return render(request, pagina, contexto)
     return vista_evaluador

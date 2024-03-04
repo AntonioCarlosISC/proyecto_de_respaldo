@@ -65,13 +65,13 @@ b23Form = formularios['b23']
 User = UsuarioPersonalizado
 
 class FormularioPersonalizadoUsuario(UserCreationForm):
+    
     OPCIONES_ROL = (
         ('investigador', 'Investigador'),
         ('evaluador', 'Evaluador'),
         ('admin', 'Administrador'),
     )
-    rol = forms.ChoiceField(choices=OPCIONES_ROL, required=False, label='Rol')
     class Meta:
         model = User
-        fields = ("username","email","rol","password1","password2",)
+        fields = ("username","email","password1","password2",)
         

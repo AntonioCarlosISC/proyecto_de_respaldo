@@ -5,7 +5,13 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 #Creacion del modelo personalizado para usuarios
 class UsuarioPersonalizado(AbstractUser):
-    rol = models.CharField(verbose_name='rol',max_length=20,blank=True)
+    OPCIONES_ROL = (
+        ('sin_asignar', 'Sin asignar'),
+        ('investigador', 'Investigador'),
+        ('evaluador', 'Evaluador'),
+        ('admin', 'Administrador'),
+    )
+    rol = models.CharField(max_length=20, choices=OPCIONES_ROL, default='sin_asignar')
 
 # Creación de los modelos que serán posteriormente migrados a la base de datos
 class b1(models.Model):
@@ -224,8 +230,3 @@ class a14(models.Model):
         self.imagen.storage.delete(self.imagen.name)
         super().delete()
 
-#Creacion del modelo Calificacion
-class Calificacion(models.Model):
-    modelo_a1 = models.ForeignKey(a1, on_delete=models.CASCADE, verbose_name="Relacionado con a1", null=True, blank=True)
-    calificacion = models.IntegerField(verbose_name="Calificacion")
-    estado = models.CharField(max_length=20,verbose_name="Estado de la calificacion")
