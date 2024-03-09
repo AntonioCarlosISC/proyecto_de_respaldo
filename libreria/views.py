@@ -162,34 +162,15 @@ def evaluador(request):
     cat_a1 = a1.objects.all()
     return render(request,'paginas/panel_evaluador.html',{'cat_a1':cat_a1})
 
-
-# Función de fábrica para la vista evaluador con paginación
-def generar_vista_evaluador(*modelos):
-    def vista_evaluador(request):
-        # Recoger el modelo a paginar y el número de página desde los parámetros de la URL
-        modelo_paginar = request.GET.get('modelo_paginar')
-        pagina_numero = request.GET.get('pagina', 1)
-        contexto = {}
-        
-        for modelo in modelos:
-            nombre_modelo = modelo.__name__.lower() + 's'
-            objetos = modelo.objects.all()
-
-            # Paginar solo el modelo especificado
-            if modelo_paginar and modelo_paginar.lower() == nombre_modelo:
-                paginator = Paginator(objetos, 5)  # Ajusta 10 (o el número deseado) objetos por página
-                pagina_objetos = paginator.get_page(pagina_numero)
-                contexto[nombre_modelo] = pagina_objetos
-            else:
-                contexto[nombre_modelo] = objetos
-
+def generar_vista_evaluador(modelo):
+    def evaluador(request):
+        objetos = modelo.objects.all()
         pagina = 'paginas/panel_evaluador.html'
-        return render(request, pagina, contexto)
-    return vista_evaluador
+        contexto = {f'{modelo.__name__.lower()}s':objetos}
+        return render(request,pagina,contexto)
+    return evaluador
 
-# Usando la nueva función para generar una vista que incluye todos los modelos
-vista_evaluador = generar_vista_evaluador(a1,a2,a3,a4,a5,a6,a7,a8,a9,a10,a11,a12,a13,a14,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12,b13,b14,b15,b16,b17,b18, b19, b20,b21,b22,b23)
-
+evaluacion = generar_vista_evaluador(a1)
 
 def salir(request):
     logout(request)

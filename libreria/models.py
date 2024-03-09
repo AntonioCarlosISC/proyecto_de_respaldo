@@ -11,7 +11,7 @@ class UsuarioPersonalizado(AbstractUser):
         ('evaluador', 'Evaluador'),
         ('admin', 'Administrador'),
     )
-    rol = models.CharField(max_length=20, choices=OPCIONES_ROL, default='sin_asignar')
+    rol = models.CharField(verbose_name='rol',max_length=20,blank=True)
 
 # Creación de los modelos que serán posteriormente migrados a la base de datos
 class b1(models.Model):

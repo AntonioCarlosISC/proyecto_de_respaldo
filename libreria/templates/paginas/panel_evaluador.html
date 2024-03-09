@@ -17,6 +17,14 @@
                     <th scope="col">Archivos del Libro</th>
                     <th scope="col">Accion</th>
                 </tr>
+                
+                    {% for a1 in a1s %}
+                    <tr>
+                    <td>{{a1.idInv}}</td>
+                    <td><a class="btn btn-warning" href={{a1.arch_libro}}>Archivo</a></td>
+                    </tr>
+                    {% endfor %}
+                
             </thead>
             <tbody>
                 {% for a1 in pagina_objetos_a1 %}
