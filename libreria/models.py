@@ -11,7 +11,7 @@ class UsuarioPersonalizado(AbstractUser):
         ('evaluador', 'Evaluador'),
         ('admin', 'Administrador'),
     )
-    rol = models.CharField(verbose_name='rol',max_length=20,blank=True)
+    rol = models.CharField(verbose_name='rol',max_length=20,blank=False,choices=OPCIONES_ROL,default='sin_asignar')
 
 # Creación de los modelos que serán posteriormente migrados a la base de datos
 class b1(models.Model):
@@ -22,6 +22,7 @@ class b1(models.Model):
     titulo = models.FileField(upload_to='media/archivos/',verbose_name="Titulo", null=True) #<-- Las rutas declaradas dentro de la función "upload_to" indican la ruta donde serán almacenados los archivos
     cedula = models.FileField( upload_to='media/archivos/',verbose_name="Cédula", null=True)
     carta_conacyt = models.FileField(upload_to='media/archivos/', verbose_name="Carta conacyt", null=True)
+    
     
 class b2(models.Model):
     idmae =	models.AutoField(primary_key=True)

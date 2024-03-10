@@ -160,17 +160,54 @@ def redirigir_usuario(request):
 
 def evaluador(request):
     cat_a1 = a1.objects.all()
-    return render(request,'paginas/panel_evaluador.html',{'cat_a1':cat_a1})
+    return render(request,'paginas/evaluador.html',{'cat_a1':cat_a1})
 
 def generar_vista_evaluador(modelo):
     def evaluador(request):
         objetos = modelo.objects.all()
         pagina = 'paginas/panel_evaluador.html'
-        contexto = {f'{modelo.__name__.lower()}s':objetos}
+        contexto = {'datos':objetos}
         return render(request,pagina,contexto)
     return evaluador
 
-evaluacion = generar_vista_evaluador(a1)
+evaluacion_a1 = generar_vista_evaluador(a1)
+evaluacion_a2 = generar_vista_evaluador(a2)
+evaluacion_a3 = generar_vista_evaluador(a3)
+evaluacion_a4 = generar_vista_evaluador(a4)
+evaluacion_a5 = generar_vista_evaluador(a5)
+evaluacion_a6 = generar_vista_evaluador(a6)
+evaluacion_a7 = generar_vista_evaluador(a7)
+evaluacion_a8 = generar_vista_evaluador(a8)
+evaluacion_a9 = generar_vista_evaluador(a9)
+evaluacion_a10 = generar_vista_evaluador(a10)
+evaluacion_a11 = generar_vista_evaluador(a11)
+evaluacion_a12 = generar_vista_evaluador(a12)
+evaluacion_a13 = generar_vista_evaluador(a13)
+evaluacion_a14 = generar_vista_evaluador(a14)
+
+evaluacion_b1 = generar_vista_evaluador(b1)
+evaluacion_b2 = generar_vista_evaluador(b2)
+evaluacion_b3 = generar_vista_evaluador(b3)
+evaluacion_b4 = generar_vista_evaluador(b4)
+evaluacion_b5 = generar_vista_evaluador(b5)
+evaluacion_b6 = generar_vista_evaluador(b6)
+evaluacion_b7 = generar_vista_evaluador(b7)
+evaluacion_b8 = generar_vista_evaluador(b8)
+evaluacion_b9 = generar_vista_evaluador(b9)
+evaluacion_b10 = generar_vista_evaluador(b10)
+evaluacion_b11 = generar_vista_evaluador(b11)
+evaluacion_b12 = generar_vista_evaluador(b12)
+evaluacion_b13 = generar_vista_evaluador(b13)
+evaluacion_b14 = generar_vista_evaluador(b14)
+evaluacion_b15 = generar_vista_evaluador(b15)
+evaluacion_b16 = generar_vista_evaluador(b16)
+evaluacion_b17 = generar_vista_evaluador(b17)
+evaluacion_b18 = generar_vista_evaluador(b18)
+evaluacion_b19 = generar_vista_evaluador(b19)
+evaluacion_b20 = generar_vista_evaluador(b20)
+evaluacion_b21 = generar_vista_evaluador(b21)
+evaluacion_b22 = generar_vista_evaluador(b22)
+evaluacion_b23 = generar_vista_evaluador(b23)
 
 def salir(request):
     logout(request)
